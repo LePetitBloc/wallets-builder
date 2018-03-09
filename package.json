@@ -1,0 +1,26 @@
+{
+  "name": "wallets-builder",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Wallets image builder.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LePetitBloc/wallets-builder.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/LePetitBloc/wallets-builder/issues"
+  },
+  "homepage": "https://github.com/LePetitBloc/wallets-builder#readme",
+  "dependencies": {
+    "chalk": "^2.3.2",
+    "wallets.json": "^2.0.1",
+    "rxjs": "^5.5.6"
+  }
+}
