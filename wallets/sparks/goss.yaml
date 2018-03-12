@@ -1,0 +1,44 @@
+file:
+  /usr/local/bin/Sparksd:
+    exists: true
+    mode: '0755'
+    filetype: file
+  /usr/local/bin/Sparks-cli:
+    exists: true
+    mode: '0755'
+    filetype: file
+  /usr/local/bin/Sparks-tx:
+    exists: true
+    mode: '0755'
+    filetype: file
+  /home/Sparks/.Sparks/Sparks.conf:
+    exists: true
+    filetype: file
+    contains:
+      - rpcuser
+      - rpcpassword
+  /home/Sparks/.Sparks/masternode.conf:
+    exists: true
+    filetype: file
+    contains:
+      - Masternode config file
+  /home/Sparks/data:
+    filetype: directory
+    exists: true
+port:
+  'tcp:8890':
+    listening: true
+  'tcp:8892':
+    listening: true
+user:
+  Sparks:
+    exists: true
+    groups:
+      - Sparks
+    home: /home/Sparks
+group:
+  Sparks:
+    exists: true
+process:
+  Sparksd:
+    running: true

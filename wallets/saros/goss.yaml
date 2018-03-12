@@ -1,0 +1,44 @@
+file:
+  /usr/local/bin/sarosd:
+    exists: true
+    mode: '0755'
+    filetype: file
+  /usr/local/bin/saros-cli:
+    exists: true
+    mode: '0755'
+    filetype: file
+  /usr/local/bin/saros-tx:
+    exists: true
+    mode: '0755'
+    filetype: file
+  /home/saros/.saroscore/saros.conf:
+    exists: true
+    filetype: file
+    contains:
+      - rpcuser
+      - rpcpassword
+  /home/saros/.saroscore/masternode.conf:
+    exists: true
+    filetype: file
+    contains:
+      - Masternode config file
+  /home/saros/data:
+    filetype: directory
+    exists: true
+port:
+  'tcp:8992':
+    listening: true
+  'tcp:9891':
+    listening: true
+user:
+  saros:
+    exists: true
+    groups:
+      - saros
+    home: /home/saros
+group:
+  saros:
+    exists: true
+process:
+  sarosd:
+    running: true

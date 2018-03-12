@@ -7,7 +7,7 @@ ARG WALLET="dash"
 ARG BASE_DIR=".dash/"
 ARG CONFIG_FILE="dash.conf"
 ARG PORT=9999
-ARG RPC_PORT=9999
+ARG RPC_PORT=9998
 ARG REPOSITORY="https://github.com/dashpay/dash.git"
 
 ENV USE_UPNP=$USE_UPNP \
@@ -15,7 +15,7 @@ ENV USE_UPNP=$USE_UPNP \
     BASE_DIR=$BASE_DIR \
     CONFIG_FILE=$CONFIG_FILE \
     PORT=$PORT \
-    RPC_PORT=$PORT
+    RPC_PORT=$RPC_PORT
 
 EXPOSE $PORT $RPC_PORT
 
@@ -59,7 +59,8 @@ WORKDIR /home/$WALLET
 
 RUN mkdir -p data $BASE_DIR
 
-COPY wallet/$CONF_DIRECTORY $BASE_DIR
+COPY wallet/conf/masternode.conf ${BASE_DIR}masternode.conf
+COPY wallet/conf/dash.conf $BASE_DIR$CONFIG_FILE
 
-ENTRYPOINT ["sh", "-c", "/usr/local/bin/${WALLET}d", "-reindex", "-printtoconsole", "-logtimestamps=1", "-datadir=data", "-conf=../${CONF_DIRECTORY}${CONFIG_FILE}", "-mnconf=../${CONF_DIRECTORY}masternode.conf", "-port=${CONF_DIRECTORY}", "-rpcport=9998"]
+ENTRYPOINT ["sh", "-c", "/usr/local/bin/${WALLET}d", "-reindex", "-printtoconsole", "-logtimestamps=1", "-datadir=data", "-conf=../${BASE_DIR}${CONFIG_FILE}", "-mnconf=../${BASE_DIR}masternode.conf", "-port=${PORT}", "-rpcport=${RPC_PORT}"]
 CMD ["-rpcallowip=127.0.0.1", "-server=1", "-masternode=0"]

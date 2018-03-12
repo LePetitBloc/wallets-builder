@@ -1,0 +1,44 @@
+file:
+  /usr/local/bin/omegacoind:
+    exists: true
+    mode: '0755'
+    filetype: file
+  /usr/local/bin/omegacoin-cli:
+    exists: true
+    mode: '0755'
+    filetype: file
+  /usr/local/bin/omegacoin-tx:
+    exists: true
+    mode: '0755'
+    filetype: file
+  /home/omegacoin/.omegacoincore/omegacoin.conf:
+    exists: true
+    filetype: file
+    contains:
+      - rpcuser
+      - rpcpassword
+  /home/omegacoin/.omegacoincore/masternode.conf:
+    exists: true
+    filetype: file
+    contains:
+      - Masternode config file
+  /home/omegacoin/data:
+    filetype: directory
+    exists: true
+port:
+  'tcp:7777':
+    listening: true
+  'tcp:7778':
+    listening: true
+user:
+  omegacoin:
+    exists: true
+    groups:
+      - omegacoin
+    home: /home/omegacoin
+group:
+  omegacoin:
+    exists: true
+process:
+  omegacoind:
+    running: true
