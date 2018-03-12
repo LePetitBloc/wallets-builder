@@ -4,3 +4,4 @@
 * Goacoin [lepetitbloc/goacoind:latest](https://hub.docker.com/r/lepetitbloc/goacoind/)
 * Omega [lepetitbloc/omegacoind:latest](https://hub.docker.com/r/lepetitbloc/omegacoind/)
 * Saros [lepetitbloc/sarosd:latest](https://hub.docker.com/r/lepetitbloc/sarosd/)
+* Crowdcoin [lepetitbloc/crowdcoind:latest](https://hub.docker.com/r/lepetitbloc/crowdcoind/)
