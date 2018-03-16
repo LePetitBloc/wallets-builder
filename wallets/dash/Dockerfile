@@ -61,6 +61,6 @@ RUN mkdir -p data $BASE_DIR
 
 COPY wallet/conf/masternode.conf ${BASE_DIR}masternode.conf
 COPY wallet/conf/dash.conf $BASE_DIR$CONFIG_FILE
+COPY docker-entrypoint.sh /usr/local/bin/docker-entrypoint.sh
 
-ENTRYPOINT ["sh", "-c", "/usr/local/bin/${WALLET}d", "-reindex", "-printtoconsole", "-logtimestamps=1", "-datadir=data", "-conf=../${BASE_DIR}${CONFIG_FILE}", "-mnconf=../${BASE_DIR}masternode.conf", "-port=${PORT}", "-rpcport=${RPC_PORT}"]
-CMD ["-rpcallowip=127.0.0.1", "-server=1", "-masternode=0"]
+ENTRYPOINT ["docker-entrypoint.sh"]
