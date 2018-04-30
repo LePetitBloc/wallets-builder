@@ -6,7 +6,7 @@ require('rxjs/add/observable/from');
 require('rxjs/add/operator/mergeMap');
 require('rxjs/add/operator/concat');
 const { mkdir, writeFile } = require('./fs');
-const { spawn } = require('./child_process');
+const { spawn } = require('observable-child-process');
 const { dumpGossDocument } = require('./goss');
 const buildArgs = require('./buildArgs');
 
