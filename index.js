@@ -2,11 +2,11 @@ const walletsMap = require('wallets.json');
 const { dirname, resolve } = require('path');
 const { existsSync } = require('fs');
 const { Observable } = require('rxjs/Observable');
+const { spawn } = require('observable-child-process');
 require('rxjs/add/observable/from');
 require('rxjs/add/operator/mergeMap');
 require('rxjs/add/operator/concat');
 const { mkdir, writeFile } = require('./fs');
-const { spawn } = require('observable-child-process');
 const { dumpGossDocument } = require('./goss');
 const buildArgs = require('./buildArgs');
 
