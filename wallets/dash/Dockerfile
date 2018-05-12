@@ -20,7 +20,7 @@ ENV USE_UPNP=$USE_UPNP \
 EXPOSE $PORT $RPC_PORT
 
 RUN apt-get update -y && apt-get install -y \
-    libssl-dev \
+    libssl1.0-dev \
     libboost-system-dev \
     libboost-filesystem-dev \
     libboost-chrono-dev \
@@ -28,7 +28,6 @@ RUN apt-get update -y && apt-get install -y \
     libboost-test-dev \
     libboost-thread-dev \
     libminiupnpc-dev \
-    libqrencode-dev \
     libgmp-dev \
     libevent-dev \
     libzmq3-dev \
