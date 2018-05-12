@@ -23,6 +23,6 @@
     "js-yaml": "^3.11.0",
     "observable-child-process": "0.0.1",
     "rxjs": "^5.5.6",
-    "wallets.json": "^2.1.4"
+    "wallets.json": "^2.3.6"
   }
 }
