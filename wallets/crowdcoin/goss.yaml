@@ -1,0 +1,44 @@
+file:
+  /usr/local/bin/crowdcoind:
+    exists: true
+    mode: '0755'
+    filetype: file
+  /usr/local/bin/crowdcoin-cli:
+    exists: true
+    mode: '0755'
+    filetype: file
+  /usr/local/bin/crowdcoin-tx:
+    exists: true
+    mode: '0755'
+    filetype: file
+  /home/crowdcoin/.crowdcoincore/crowdcoin.conf:
+    exists: true
+    filetype: file
+    contains:
+      - rpcuser
+      - rpcpassword
+  /home/crowdcoin/.crowdcoincore/masternode.conf:
+    exists: true
+    filetype: file
+    contains:
+      - Masternode config file
+  /home/crowdcoin/data:
+    filetype: directory
+    exists: true
+port:
+  'tcp:12875':
+    listening: true
+  'tcp:11998':
+    listening: true
+user:
+  crowdcoin:
+    exists: true
+    groups:
+      - crowdcoin
+    home: /home/crowdcoin
+group:
+  crowdcoin:
+    exists: true
+process:
+  crowdcoind:
+    running: true

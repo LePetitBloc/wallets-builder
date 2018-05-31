@@ -1,0 +1,44 @@
+file:
+  /usr/local/bin/artaxd:
+    exists: true
+    mode: '0755'
+    filetype: file
+  /usr/local/bin/artax-cli:
+    exists: true
+    mode: '0755'
+    filetype: file
+  /usr/local/bin/artax-tx:
+    exists: true
+    mode: '0755'
+    filetype: file
+  /home/artax/.artaxcore/artax.conf:
+    exists: true
+    filetype: file
+    contains:
+      - rpcuser
+      - rpcpassword
+  /home/artax/.artaxcore/masternode.conf:
+    exists: true
+    filetype: file
+    contains:
+      - Masternode config file
+  /home/artax/data:
+    filetype: directory
+    exists: true
+port:
+  'tcp:21526':
+    listening: true
+  'tcp:21527':
+    listening: true
+user:
+  artax:
+    exists: true
+    groups:
+      - artax
+    home: /home/artax
+group:
+  artax:
+    exists: true
+process:
+  artaxd:
+    running: true
