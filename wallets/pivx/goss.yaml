@@ -1,0 +1,44 @@
+file:
+  /usr/local/bin/pivxd:
+    exists: true
+    mode: '0755'
+    filetype: file
+  /usr/local/bin/pivx-cli:
+    exists: true
+    mode: '0755'
+    filetype: file
+  /usr/local/bin/pivx-tx:
+    exists: true
+    mode: '0755'
+    filetype: file
+  /home/pivx/.pivx/pivx.conf:
+    exists: true
+    filetype: file
+    contains:
+      - rpcuser
+      - rpcpassword
+  /home/pivx/.pivx/masternode.conf:
+    exists: true
+    filetype: file
+    contains:
+      - Masternode config file
+  /home/pivx/data:
+    filetype: directory
+    exists: true
+port:
+  'tcp:51472':
+    listening: true
+  'tcp:51473':
+    listening: true
+user:
+  pivx:
+    exists: true
+    groups:
+      - pivx
+    home: /home/pivx
+group:
+  pivx:
+    exists: true
+process:
+  pivxd:
+    running: true

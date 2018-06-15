@@ -1,0 +1,44 @@
+file:
+  /usr/local/bin/shekeld:
+    exists: true
+    mode: '0755'
+    filetype: file
+  /usr/local/bin/shekel-cli:
+    exists: true
+    mode: '0755'
+    filetype: file
+  /usr/local/bin/shekel-tx:
+    exists: true
+    mode: '0755'
+    filetype: file
+  /home/shekel/.shekel/shekel.conf:
+    exists: true
+    filetype: file
+    contains:
+      - rpcuser
+      - rpcpassword
+  /home/shekel/.shekel/masternode.conf:
+    exists: true
+    filetype: file
+    contains:
+      - Masternode config file
+  /home/shekel/data:
+    filetype: directory
+    exists: true
+port:
+  'tcp:49472':
+    listening: true
+  'tcp:49473':
+    listening: true
+user:
+  shekel:
+    exists: true
+    groups:
+      - shekel
+    home: /home/shekel
+group:
+  shekel:
+    exists: true
+process:
+  shekeld:
+    running: true

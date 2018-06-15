@@ -10,7 +10,7 @@ const { mkdir, writeFile } = require('./fs');
 const { dumpGossDocument } = require('./goss');
 const buildArgs = require('./buildArgs');
 
-const BLACKLIST = ['pivx'];
+const BLACKLIST = [];
 const WALLETS_DIR = './wallets/';
 const availableWallets = Object
     .keys(walletsMap)

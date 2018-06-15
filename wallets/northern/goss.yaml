@@ -1,0 +1,44 @@
+file:
+  /usr/local/bin/northernd:
+    exists: true
+    mode: '0755'
+    filetype: file
+  /usr/local/bin/northern-cli:
+    exists: true
+    mode: '0755'
+    filetype: file
+  /usr/local/bin/northern-tx:
+    exists: true
+    mode: '0755'
+    filetype: file
+  /home/northern/.northern/northern.conf:
+    exists: true
+    filetype: file
+    contains:
+      - rpcuser
+      - rpcpassword
+  /home/northern/.northern/masternode.conf:
+    exists: true
+    filetype: file
+    contains:
+      - Masternode config file
+  /home/northern/data:
+    filetype: directory
+    exists: true
+port:
+  'tcp:60151':
+    listening: true
+  'tcp:61150':
+    listening: true
+user:
+  northern:
+    exists: true
+    groups:
+      - northern
+    home: /home/northern
+group:
+  northern:
+    exists: true
+process:
+  northernd:
+    running: true
