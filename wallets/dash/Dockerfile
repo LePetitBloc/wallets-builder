@@ -9,6 +9,7 @@ ARG CONFIG_FILE="dash.conf"
 ARG PORT=9999
 ARG RPC_PORT=9998
 ARG REPOSITORY="https://github.com/dashpay/dash.git"
+ARG REF="tags/v0.12.2.3"
 
 ENV USE_UPNP=$USE_UPNP \
     WALLET=$WALLET \
@@ -20,7 +21,7 @@ ENV USE_UPNP=$USE_UPNP \
 EXPOSE $PORT $RPC_PORT
 
 RUN apt-get update -y && apt-get install -y \
-    libssl1.0-dev \
+    libssl-dev \
     libboost-system-dev \
     libboost-filesystem-dev \
     libboost-chrono-dev \
@@ -37,20 +38,22 @@ RUN apt-get update -y && apt-get install -y \
     bsdmainutils \
 && rm -rf /var/lib/apt/lists/* \
 && useradd -lrUm $WALLET \
-&& git clone --depth 1 $REPOSITORY /tmp/$WALLET
+&& git clone $REPOSITORY /tmp/$WALLET
 
 WORKDIR /tmp/$WALLET
 
 # build
-RUN chmod +x autogen.sh share/genbuild.sh src/leveldb/build_detect_platform \
-&& ./autogen.sh \
-&& ./configure CPPFLAGS="-I/usr/local/db4/include -O2" LDFLAGS="-L/usr/local/db4/lib" \
-&& make \
-&& strip src/${WALLET}d src/${WALLET}-cli src/${WALLET}-tx \
-&& mv src/${WALLET}d /usr/local/bin/ \
-&& mv src/${WALLET}-cli /usr/local/bin/ \
-&& mv src/${WALLET}-tx /usr/local/bin/ \
-&& rm -rf /tmp/$WALLET
+RUN git fetch --tags \
+&&  git checkout $REF \
+&&  chmod +x autogen.sh share/genbuild.sh src/leveldb/build_detect_platform \
+&&  ./autogen.sh \
+&&  ./configure CPPFLAGS="-I/usr/local/db4/include -O2" LDFLAGS="-L/usr/local/db4/lib" \
+&&  make \
+&&  strip src/${WALLET}d src/${WALLET}-cli src/${WALLET}-tx \
+&&  mv src/${WALLET}d /usr/local/bin/ \
+&&  mv src/${WALLET}-cli /usr/local/bin/ \
+&&  mv src/${WALLET}-tx /usr/local/bin/ \
+&&  rm -rf /tmp/$WALLET
 
 USER $WALLET
 
