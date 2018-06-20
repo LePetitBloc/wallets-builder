@@ -152,7 +152,7 @@ docker-compose up --build
 ${website && `- Website ${website}`}
 - Github ${repository}
 ${announcement && `- Bitcointalk announcement ${announcement}`}
-${explorers.length > 0 && `- Block explorer ${explorers.join()}`}
+${(explorers.length > 0) ? `- Block explorer ${explorers.join()}` : ''}
 
 ## Parent project
 - https://github.com/${organization.toLowerCase()}/wallets
