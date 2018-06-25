@@ -1,7 +1,7 @@
 {
   "name": "wallets-builder",
   "private": true,
-  "version": "1.1.1",
+  "version": "1.2.1",
   "description": "Wallets image builder.",
   "main": "index.js",
   "scripts": {
@@ -23,12 +23,11 @@
     "@lutangar/observable-fs": "^0.1.0",
     "chalk": "^2.3.2",
     "isomorphic-fetch": "^2.2.1",
-    "js-yaml": "^3.11.0",
     "lodash.isnumber": "^3.0.3",
     "observable-child-process": "0.0.1",
     "observable-git": "^1.0.3",
     "rxjs": "^5.5.6",
-    "wallets.json": "^2.6.6"
+    "wallets.json": "^2.6.7"
   },
   "devDependencies": {
     "prettier": "^1.13.5"
