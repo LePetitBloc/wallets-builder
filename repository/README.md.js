@@ -22,17 +22,20 @@ const template = ({
   organization,
   masternode,
 }) =>
-  `# ${name} core Wallet Daemon (\`${baseBinary}d\`)
+  `# [${name} core Wallet Daemon (\`${baseBinary}d\`)](https://github.com/${organization}/${baseBinary}d)
+
+[![Docker Stars][docker-svg]][docker-url]
+
 ${name} core Wallet Daemon for headless wallets${masternode ? ' and **masternodes**' : ''}. ${emoji}
 
 > For a list of all available wallet images see https://${organization.toLowerCase()}.github.io/wallets/
 
 ## Issues
 - Parameters value issues should be reported at:
-https://github.com/${organization.toLowerCase()}/wallets
+https://github.com/${organization}/wallets
 
 - All other issues should be reported at:
-https://github.com/${organization.toLowerCase()}/wallets-builder
+https://github.com/${organization}/wallets-builder
 
 ## Usage
 ${masternode &&
@@ -44,9 +47,9 @@ ${masternode &&
 docker run --name ${baseBinary}-wallet --restart always -d ${image} -rpcuser=${baseBinary.toLowerCase()}-wallet -rpcpassword=${rpcpassword}
 \`\`\`
 > We recommend to mount a volume for easier access to the *data* and the *configuration* files.
-> You should also create a configuration for your RPC credentials (see \`wallet/${basedir}${configFile}\`) to avoid retyping them when using the internal \`${baseBinary}-cli\`.
+> You should also create a configuration for your RPC credentials (see \`./wallet/${basedir}${configFile}\`) to avoid retyping them when using the internal \`${baseBinary}-cli\`.
 > \`\`\`
-> docker run --name ${baseBinary}-wallet --restart always -d -v ./wallet/:/home/${baseBinary.toLowerCase()}/ ${image}
+> docker run --name ${baseBinary}-wallet --restart always -d -v \${PWD}/wallet/:/home/${baseBinary.toLowerCase()}/ ${image}
 > \`\`\`
 
 > ${warningEmoji} Ensure that a \`data\` directory **exists** and is **writable** in the mounted host directory.
@@ -97,14 +100,14 @@ masternode genkey
 >7ev3RXQXYfztreEz8wmPKgJUpNiqkAkkdxt24C3ZKtg5qEVfou9
 >\`\`\`
 
-4. And finally creates the \`~/${basedir}/masternode.conf\` file, and fill in following this template:
+4. And finally creates the \`./wallet/${basedir}/masternode.conf\` file, and fill in following this template:
 > \`mn01 masternode:21529 YouMasterNodePrivateKey TransactionHash 0 YourWalletAddress:100\`
 \`\`\`
-touch ./${baseBinary}/conf/masternode.conf
+touch ./wallet/${basedir}/masternode.conf
 \`\`\`
 
 #### Setup
-1. As a classic wallet, create a \`masternode/${basedir}${configFile}\` configuration file
+1. As a classic wallet, create a \`./masternode/${basedir}${configFile}\` configuration file
 \`\`\`
 rpcuser=${baseBinary.toLowerCase()}-mn01
 rpcpassword=${rpcpassword}
@@ -116,7 +119,7 @@ ${nodes.map(node => `addnode=${node}`).join('\r\n')}
 
 2. Run a container as a **masternode**:
 \`\`\`
-docker run --name ${baseBinary}-masternode --restart always -d -p ${mainnetPort}:${mainnetPort} -p ${mainRpcPort}:${mainRpcPort} -v /home/${baseBinary}/masternode:/home/${baseBinary}/ ${image} -masternode=1
+docker run --name ${baseBinary}-masternode --restart always -d -p ${mainnetPort}:${mainnetPort} -p ${mainRpcPort}:${mainRpcPort} -v \${PWD}/masternode/:/home/${baseBinary}/ ${image} -masternode=1
 \`\`\`
 
 3. Check the the number of \`blocks\` until the chain is sync:
@@ -152,20 +155,23 @@ docker-compose up --build
 ${website && `- Website ${website}`}
 - Github ${repository}
 ${announcement && `- Bitcointalk announcement ${announcement}`}
-${(explorers.length > 0) ? `- Block explorer ${explorers.join()}` : ''}
+${explorers.length > 0 ? `- Block explorer ${explorers.join()}` : ''}
 
 ## Parent project
-- https://github.com/${organization.toLowerCase()}/wallets
-- https://github.com/${organization.toLowerCase()}/wallets-builder
+- https://github.com/${organization}/wallets
+- https://github.com/${organization}/wallets-builder
 
 ## Parent image
 - Berkeley DB v${bdbVersion}
 \`FROM ${organization.toLowerCase()}/bdb:${bdbVersion}\`
-> https://github.com/${organization.toLowerCase()}/bdb/tree/${bdbVersion}
+> https://github.com/${organization}/bdb/tree/${bdbVersion}
 > https://hub.docker.com/r/${organization.toLowerCase()}/bdb/
 
 ## Licence
 MIT
+
+[docker-url]: https://hub.docker.com/r/${organization.toLowerCase()}/${baseBinary}d/
+[docker-svg]: https://img.shields.io/docker/stars/${organization.toLowerCase()}/${baseBinary}d.svg
 `;
 
 module.exports = template;

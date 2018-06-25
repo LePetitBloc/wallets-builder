@@ -2,43 +2,33 @@
 Dash
 - DockerHub [lepetitbloc/dashd:latest](https://hub.docker.com/r/lepetitbloc/dashd/)
 - Github https://github.com/LePetitBloc/dashd
-
-PIVX
+PIVX
 - DockerHub [lepetitbloc/pivxd:latest](https://hub.docker.com/r/lepetitbloc/pivxd/)
 - Github https://github.com/LePetitBloc/pivxd
-
-Sparks
+Sparks
 - DockerHub [lepetitbloc/sparksd:latest](https://hub.docker.com/r/lepetitbloc/sparksd/)
 - Github https://github.com/LePetitBloc/sparksd
-
-Goacoin
+Goacoin
 - DockerHub [lepetitbloc/goacoind:latest](https://hub.docker.com/r/lepetitbloc/goacoind/)
 - Github https://github.com/LePetitBloc/goacoind
-
-Omega
+Omega
 - DockerHub [lepetitbloc/omegacoind:latest](https://hub.docker.com/r/lepetitbloc/omegacoind/)
 - Github https://github.com/LePetitBloc/omegacoind
-
-Saros
+Saros
 - DockerHub [lepetitbloc/sarosd:latest](https://hub.docker.com/r/lepetitbloc/sarosd/)
 - Github https://github.com/LePetitBloc/sarosd
-
-Shekel
+Shekel
 - DockerHub [lepetitbloc/shekeld:latest](https://hub.docker.com/r/lepetitbloc/shekeld/)
 - Github https://github.com/LePetitBloc/shekeld
-
-Northern
+Northern
 - DockerHub [lepetitbloc/northernd:latest](https://hub.docker.com/r/lepetitbloc/northernd/)
 - Github https://github.com/LePetitBloc/northernd
-
-Artax
+Artax
 - DockerHub [lepetitbloc/artaxd:latest](https://hub.docker.com/r/lepetitbloc/artaxd/)
 - Github https://github.com/LePetitBloc/artaxd
-
-Crowdcoin
+Crowdcoin
 - DockerHub [lepetitbloc/crowdcoind:latest](https://hub.docker.com/r/lepetitbloc/crowdcoind/)
 - Github https://github.com/LePetitBloc/crowdcoind
-
-CRAVE
+CRAVE
 - DockerHub [lepetitbloc/craved:latest](https://hub.docker.com/r/lepetitbloc/craved/)
 - Github https://github.com/LePetitBloc/craved
