@@ -2,6 +2,8 @@ ARG BDB_VERSION="4.8.30.NC"
 
 FROM lepetitbloc/bdb:$BDB_VERSION
 
+LABEL maintainer="johan@lepetitbloc.net"
+
 ARG USE_UPNP=1
 ARG WALLET="dash"
 ARG BASE_DIR=".dash/"
@@ -61,8 +63,8 @@ WORKDIR /home/$WALLET
 
 RUN mkdir -p data $BASE_DIR
 
-COPY wallet/conf/masternode.conf ${BASE_DIR}masternode.conf
-COPY wallet/conf/dash.conf $BASE_DIR$CONFIG_FILE
+COPY wallet/${BASE_DIR}masternode.conf ${BASE_DIR}masternode.conf
+COPY wallet/$BASE_DIR$CONFIG_FILE $BASE_DIR$CONFIG_FILE
 COPY docker-entrypoint.sh /usr/local/bin/docker-entrypoint.sh
 
 ENTRYPOINT ["docker-entrypoint.sh"]
